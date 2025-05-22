@@ -83,6 +83,8 @@ void ChangeArch() {
   mon_reynolds = mon_reynolds_cpu;
   mon_maxwell  = mon_maxwell_cpu;
   mon_bxflux   = mon_bxflux_cpu;
+  mon_force_rad = mon_force_rad_cpu;
+  mon_force_azim= mon_force_azim_cpu;
 
   comm = comm_cpu;
 
@@ -484,6 +486,8 @@ void ChangeArch() {
 	  mon_momy = mon_momy_gpu;
 	  mon_momz = mon_momz_gpu;
 	  mon_torq = mon_torq_gpu;
+	  mon_force_rad = mon_force_rad_gpu;
+	  mon_force_azim= mon_force_azim_gpu;
 	  mon_reynolds = mon_reynolds_gpu;
 	  mon_maxwell  = mon_maxwell_gpu;
 	  mon_bxflux   = mon_bxflux_gpu;
