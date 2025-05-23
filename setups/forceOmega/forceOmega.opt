@@ -1,0 +1,43 @@
+# You may enter a description between the BEGIN and END labels.
+# BEGIN
+# The "forceOmega" setup is equivalent to the "p3diso" with enhanced capabilities.
+# It allows to define the variable FORCEOMEGA. If the latter is different from zero,
+# the planet will describe a circular orbit around the star with that frequency,
+# regardless of what Kepler's law dictates.
+# make SETUP=forceOmega
+# ./fargo3d in/forceOmega.par
+# Note: this setup makes use of the FRAD monitoring (fine grain monitoring of
+the radial force component)
+# END
+#-------------------------------------------------------------------------
+
+FLUIDS := 0
+NFLUIDS = 1
+FARGO_OPT += -DNFLUIDS=${NFLUIDS}
+
+MONITOR_2D = MASS | MOM_X
+MONITOR_SCALAR = TORQ | FRAD
+
+FARGO_OPT +=  -DX
+FARGO_OPT +=  -DY
+FARGO_OPT +=  -DZ
+
+#Coordinate System.
+FARGO_OPT +=  -DSPHERICAL
+
+#Equation of State
+FARGO_OPT +=  -DISOTHERMAL
+
+FARGO_OPT += -DSTOCKHOLM
+FARGO_OPT += -DVISCOSITY
+FARGO_OPT += -DPOTENTIAL
+FARGO_OPT += -DHALFDISK
+
+FARGO_OPT += -DBM08
+
+#Cuda blocks
+ifeq (${GPU}, 1)
+FARGO_OPT += -DBLOCK_X=16
+FARGO_OPT += -DBLOCK_Y=8
+FARGO_OPT += -DBLOCK_Z=4
+endif
