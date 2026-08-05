@@ -126,5 +126,5 @@ void mon_force_rad_cpu () {
 #ifdef BM08
   ChangeFrame (+1, Density, VxMed);
 #endif //BM08
-
+//<\LAST_BLOCK>
 }
